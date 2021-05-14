@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 1000000
+ int sieve[MAX + 4] = { 0 },
+  sieve_count[MAX + 4] = { 0 };
+ void form_sieve()
+{
+       sieve[1] = 1;
+        for (int i = 2; i <= MAX; i++) {
+                if (sieve[i] == 0) {
+            for (int j = i * 2; j <= MAX; j += i) {
+                if (sieve[j] == 0) {
+                    sieve[j] = 1;
+                    sieve_count[i]++;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+   long long  int t;
+    cin>>t;
+    while(t--)
+    {
+    form_sieve();
+    long long int n;
+    cin>>n;
+    
+    cout << (sieve_count[n] + 1) << endl;
+ 
+    }
+   
+    return 0;
+}
